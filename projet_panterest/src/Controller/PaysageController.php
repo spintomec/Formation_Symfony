@@ -16,7 +16,7 @@ class PaysageController extends AbstractController
     public function index(PaysagesRepository $PaysagesRepository): Response
     {
 
-        $paysages =  $PaysagesRepository->findAll();
+        $paysages =  $PaysagesRepository->findby([],['createdAt' => 'DESC']);
 
         return $this->render('pins/index.html.twig', compact('paysages'));
     }

@@ -101,6 +101,6 @@ class Paysages
        $this->setCreatedAt(new \DateTimeImmutable);
        }
 
-       $this->setUpdateddAt(new \DateTimeImmutable);
+       $this->setUpdatedAt(new \DateTimeImmutable);
     }
 }

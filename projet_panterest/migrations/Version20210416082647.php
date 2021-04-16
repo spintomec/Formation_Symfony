@@ -14,7 +14,7 @@ final class Version20210416082647 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return '';
+        return 'Add created_at and updated_at fields to paysages table';
     }
 
     public function up(Schema $schema) : void

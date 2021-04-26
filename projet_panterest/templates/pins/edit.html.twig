@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edit Landscape #' ~ paysages.id %}
+
+{% block body %}
+    <article>
+        <h1> Edit Landscape # {{paysages.id }}</h1>
+    </article>
+
+{{ form_start(monFormulaire)}}
+{{ form_widget(monFormulaire)}}
+<input type="submit" value="Update Landscape" formnovalidate>
+{{ form_end(monFormulaire)}}
+{% endblock %}

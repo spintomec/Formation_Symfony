@@ -8,5 +8,6 @@
         <h1> {{ paysage.description }} </h1>
     </article>
 
-   <h2><a href="{{ path('app_home') }}">Go Back</a></h2>
+    <a href="{{ path('edit_app', {id: paysage.id}) }}">Edit</a>
+   <a href="{{ path('app_home') }}">Go Back</a>
 {% endblock %}

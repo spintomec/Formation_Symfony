@@ -54,11 +54,14 @@ class PaysageController extends AbstractController
         ]);
     }
     /**
-     * @Route("/paysages/{id<[0-9]+>}/edit", name="edit_app", methods={"GET","POST"})
+     * @Route("/paysages/{id<[0-9]+>}/edit", name="edit_app", methods={"GET","PUT"})
      */
     public function edit(Paysages $paysages, Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(PaysageType::class, $paysages);
+        $form = $this->createForm(PaysageType::class, $paysages, [
+            'method' => 'PUT'
+        ]);
+            
 
         $form->handleRequest($request);
 
@@ -72,5 +75,14 @@ class PaysageController extends AbstractController
             'monFormulaire' => $form->createView()
         ]);
        
-    } 
+    }
+    /**
+     * @Route("/paysages/{id<[0-9]+>}/delete", name="delete_app", methods="DELETE")
+     */
+    public function delete(Paysages $paysages, Request $request, EntityManagerInterface $em): Response 
+    {
+        $em->remove($paysages);
+        $em->flush();
+        return $this->redirectToRoute('app_home');
+    }
 }

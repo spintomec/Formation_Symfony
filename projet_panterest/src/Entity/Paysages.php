@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PaysagesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PaysagesRepository::class)
@@ -21,11 +22,15 @@ class Paysages
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Title can't be blank")
+     * @Assert\Length(min=3)(message="Your title is too short")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Description can't be blank")
+     * @Assert\Length(min=10)(message="Your description is too short")
      */
     private $description;
 
@@ -49,7 +54,7 @@ class Paysages
         return $this->titre;
     }
 
-    public function setTitre(string $titre): self
+    public function setTitre(?string $titre): self
     {
         $this->titre = $titre;
 
@@ -61,7 +66,7 @@ class Paysages
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 

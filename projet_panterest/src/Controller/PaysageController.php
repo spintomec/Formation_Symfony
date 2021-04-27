@@ -45,6 +45,7 @@ class PaysageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($paysage);
             $em->flush();
+            $this->addFlash('succes', 'Landscape successfully created!');
 
             return $this->redirectToRoute('app_home');
         }
@@ -65,6 +66,7 @@ class PaysageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
+            $this->addFlash('succes', 'Landscape successfully updated!');
 
            return $this->redirectToRoute('app_home');
         }
@@ -82,7 +84,10 @@ class PaysageController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$paysage->getId(),$request->request->get('csrf_token'))) {
         $em->remove($paysage);
         $em->flush();
+        $this->addFlash('info', 'Landscape successfully deleted!');
+
         }
         return $this->redirectToRoute('app_home');
     }
+
 }

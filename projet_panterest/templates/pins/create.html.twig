@@ -2,8 +2,5 @@
 {% block title 'New Paysage' %}
 {% block body %}
 <h1> Add your paysage </h1>
-{{ form_start(monFormulaire)}}
-{{ form_widget(monFormulaire)}}
-<input type="submit" value="Add paysage" formnovalidate>
-{{ form_end(monFormulaire)}}
+{{ include ('pins/form.html.twig', {submitButton: 'Add Landscape'})}}
 {% endblock %}

@@ -7,8 +7,5 @@
         <h1> Edit Landscape # {{paysage.id }}</h1>
     </article>
 
-{{ form_start(monFormulaire)}}
-{{ form_widget(monFormulaire)}}
-<input type="submit" value="Update Landscape" formnovalidate>
-{{ form_end(monFormulaire)}}
+{{ include('pins/form.html.twig', {submitButton: 'Edit'})}}
 {% endblock %}

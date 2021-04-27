@@ -75,7 +75,7 @@ class PaysageController extends AbstractController
        
     }
     /**
-     * @Route("/paysages/{id<[0-9]+>}/delete", name="delete_app", methods="DELETE")
+     * @Route("/paysages/{id<[0-9]+>}", name="delete_app", methods="DELETE")
      */
     public function delete(Paysages $paysage, Request $request, EntityManagerInterface $em): Response 
     {

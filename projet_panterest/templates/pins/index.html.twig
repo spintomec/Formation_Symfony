@@ -8,7 +8,8 @@
     {% for paysage in paysage %}
         <article>
             <h2><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></h2>
-            <p> {{paysage.description}}</p>
+            <p> {{paysage.description|u.truncate(30,'...', false)}}</p>
+            <p> Created: {{(paysage.createdAt|ago)}}
         </article>
     {% endfor %}
 {% endblock %}

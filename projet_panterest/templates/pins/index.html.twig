@@ -3,9 +3,9 @@
 {% block title 'Les plus beaux paysages'%}
 
 {% block body %}
-    <h1> Tous les paysages : {{ pluralize(paysages|length, 'Paysage', 'Paysages') }}  </h1>
+    <h1> Tous les paysages : {{ pluralize(paysage|length, 'Paysage', 'Paysages') }}  </h1>
 
-    {% for paysage in paysages %}
+    {% for paysage in paysage %}
         <article>
             <h2><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></h2>
             <p> {{paysage.description}}</p>

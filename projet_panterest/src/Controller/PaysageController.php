@@ -20,9 +20,9 @@ class PaysageController extends AbstractController
     public function index(PaysagesRepository $PaysagesRepository): Response
     {
 
-        $paysages =  $PaysagesRepository->findby([],['createdAt' => 'DESC']);
+        $paysage =  $PaysagesRepository->findby([],['createdAt' => 'DESC']);
 
-        return $this->render('pins/index.html.twig', compact('paysages'));
+        return $this->render('pins/index.html.twig', compact('paysage'));
     }
      /**
      * @Route("/paysage/{id<[0-9]+>}", name="paysages_app", methods="GET")
@@ -36,14 +36,14 @@ class PaysageController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
-        $paysages = new Paysages;
+        $paysage = new Paysages;
 
-        $form = $this->createForm(PaysageType::class, $paysages);
+        $form = $this->createForm(PaysageType::class, $paysage);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($paysages);
+            $em->persist($paysage);
             $em->flush();
 
             return $this->redirectToRoute('app_home');
@@ -56,13 +56,11 @@ class PaysageController extends AbstractController
     /**
      * @Route("/paysages/{id<[0-9]+>}/edit", name="edit_app", methods={"GET","PUT"})
      */
-    public function edit(Paysages $paysages, Request $request, EntityManagerInterface $em): Response
+    public function edit(Paysages $paysage, Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(PaysageType::class, $paysages, [
+        $form = $this->createForm(PaysageType::class, $paysage, [
             'method' => 'PUT'
-        ]);
-            
-
+        ]); 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,7 +69,7 @@ class PaysageController extends AbstractController
            return $this->redirectToRoute('app_home');
         }
         return $this->render('pins/edit.html.twig', [
-            'paysages' => $paysages,
+            'paysage' => $paysage,
             'monFormulaire' => $form->createView()
         ]);
        
@@ -79,10 +77,12 @@ class PaysageController extends AbstractController
     /**
      * @Route("/paysages/{id<[0-9]+>}/delete", name="delete_app", methods="DELETE")
      */
-    public function delete(Paysages $paysages, Request $request, EntityManagerInterface $em): Response 
+    public function delete(Paysages $paysage, Request $request, EntityManagerInterface $em): Response 
     {
-        $em->remove($paysages);
+        if ($this->isCsrfTokenValid('delete'.$paysage->getId(),$request->request->get('csrf_token'))) {
+        $em->remove($paysage);
         $em->flush();
+        }
         return $this->redirectToRoute('app_home');
     }
 }

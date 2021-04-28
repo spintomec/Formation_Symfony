@@ -1,6 +1,11 @@
 {%extends 'Layout/base.html.twig' %}
 {% block title 'New Paysage' %}
 {% block body %}
-<h1> Add your paysage </h1>
-{{ include ('pins/form.html.twig', {submitButton: 'Add Landscape'})}}
+<div class="row">
+    <div class="col-md-7 mx-auto">
+        <h1> Add your paysage </h1>
+         {{ include ('pins/form.html.twig', {submitButton: 'Add Landscape'})}}
+    </div>   
+</div>
+
 {% endblock %}

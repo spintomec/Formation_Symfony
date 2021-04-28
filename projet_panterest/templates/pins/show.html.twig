@@ -4,14 +4,13 @@
 
 {% block body %}
     <article>
-        <h1> {{ paysage.titre }} </h1>
-        <h1> {{ paysage.description }} </h1>
+        <h2> {{ paysage.titre }} </h2>
+        <h2> {{ paysage.description }} </h2>
     </article>
 
-    <a href="{{ path('edit_app', {id: paysage.id}) }}">Edit</a>
+    <a href="{{ path('edit_app', {id: paysage.id}) }}">Edit |</a>
     <a href="#" onclick="event.preventDefault(); confirm('Are you sure') && 
     document.getElementById('js-paysage-delete-form').submit();">Delete</a>
-    <a href="{{ path('app_home') }}">Go Back</a>
 
     <form id="js-paysage-delete-form" action="{{ path('delete_app', {id: paysage.id}) }}" 
     method="post" style="display:none;">

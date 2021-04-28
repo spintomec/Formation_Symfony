@@ -3,9 +3,10 @@
 {% block title 'Edit Landscape #' ~ paysage.id %}
 
 {% block body %}
-    <article>
+<div class="row">
+    <div class="col-md-7 mx-auto">
         <h1> Edit Landscape # {{paysage.id }}</h1>
-    </article>
-
-{{ include('pins/form.html.twig', {submitButton: 'Edit'})}}
+        {{ include('pins/form.html.twig', {submitButton: 'Edit'})}}
+    </div>
+</div>
 {% endblock %}

@@ -5,10 +5,13 @@ namespace App\Entity;
 use App\Repository\PaysagesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PaysagesRepository::class)
  * @ORM\Table(name="paysages")
+ * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks
  */
 class Paysages
@@ -33,6 +36,15 @@ class Paysages
      * @Assert\Length(min=10)(message="Your description is too short")
      */
     private $description;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="paysage_image", fileNameProperty="imageName")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
@@ -112,6 +124,25 @@ class Paysages
        }
 
        $this->setUpdatedAt(new \DateTimeImmutable);
+    }
+
+    /** 
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->setUpdatedAt(new \DateTimeImmutable);
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     public function getImageName(): ?string

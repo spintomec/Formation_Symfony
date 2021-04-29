@@ -44,6 +44,11 @@ class Paysages
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageName;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,5 +112,17 @@ class Paysages
        }
 
        $this->setUpdatedAt(new \DateTimeImmutable);
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): self
+    {
+        $this->imageName = $imageName;
+
+        return $this;
     }
 }

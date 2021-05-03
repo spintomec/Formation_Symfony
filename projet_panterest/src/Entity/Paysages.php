@@ -41,7 +41,8 @@ class Paysages
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="paysage_image", fileNameProperty="imageName")
-     * 
+     * @Assert\Image(maxSize="8M")
+     * @Assert\NotNull(message="Please uploade a file")
      * @var File|null
      */
     private $imageFile;

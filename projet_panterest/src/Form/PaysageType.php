@@ -21,10 +21,11 @@ class PaysageType extends AbstractType
                 'required' => false,
                 'allow_delete' => true,
                 'download_uri' => false,
+                'imagine_pattern' => 'medium'
             ])
         ;
     }
-
+    
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

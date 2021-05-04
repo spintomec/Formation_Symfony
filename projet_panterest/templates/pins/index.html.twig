@@ -3,13 +3,18 @@
 {% block title 'Les plus beaux paysages'%}
 
 {% block body %}
-    <h1> Tous les paysages : {{ pluralize(paysage|length, 'Paysage', 'Paysages') }}  </h1>
+        {% if paysage|length > 0 %}
+        <h1 class="mb-4 text-center text-muted"> Tous les paysages : {{ pluralize(paysage|length, 'Paysage', 'Paysages') }}  </h1>
 
-    {% for paysage in paysage %}
-        <article>
-            <h2><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></h2>
-            <p> {{paysage.description|u.truncate(30,'...', false)}}</p>
-            <p> Created: {{(paysage.createdAt|ago)}}
-        </article>
-    {% endfor %}
+        {% for paysage in paysage %}
+            <article>
+                <img src="{{ vich_uploader_asset(paysage) | imagine_filter('medium') }}" alt="{{paysage.titre}}"/>
+                <h2><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></h2>
+                <p> {{paysage.description|u.truncate(30,'...', false)}}</p>
+                <p> Created: {{(paysage.createdAt|ago)}}
+            </article>
+        {% endfor %}
+    {% else %}
+        <h1 class="mt-4 text-center"> No landscape yet. <a href="{{ path('create_app') }}"> Be the first!</a> </h1>
+    {% endif %}
 {% endblock %}

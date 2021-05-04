@@ -22,3 +22,15 @@
 .alert-info {
     background-color: blue;
 }
+.vich-image {
+    .form-check {
+        @extend .mt-2
+    }
+    .vich-image img {
+        @extend .mb-2;
+     @extend .rounded;
+     @extend .shadow;
+     @extend .img-thumbnail;  
+     @extend .align-center;
+    } 
+}

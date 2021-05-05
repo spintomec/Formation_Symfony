@@ -2,5 +2,14 @@
   "build/app.css": "/build/app.css",
   "build/app.js": "/build/app.js",
   "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-2e85d5.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-2e85d5.js"
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-2e85d5.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-2e85d5.js",
+  "build/images/1200px-Royal_Standard_of_the_King_of_France.svg.png": "/build/images/1200px-Royal_Standard_of_the_King_of_France.svg.9b8b05ed.png",
+  "build/images/png": "/build/images/937fc75e798756bb6308ae27ef1dcb9d.0acab210.png",
+  "build/images/france_1643_1790.png": "/build/images/france_1643_1790.7dcd6b03.png",
+  "build/images/placeholder.jpg": "/build/images/placeholder.3c0a422b.jpg",
+  "build/images/france_XII.png": "/build/images/france_XII.71686f16.png",
+  "build/images/france-flag-png-large.jpeg": "/build/images/france-flag-png-large.b4d9a3c8.jpeg",
+  "build/images/Red_St_George's_Cross.svg.png": "/build/images/Red_St_George's_Cross.svg.1946d0c3.png",
+  "build/images/FRCROIXLORRAINE.png": "/build/images/FRCROIXLORRAINE.1b3f5591.png",
+  "build/images/saint_michel.png": "/build/images/saint_michel.95007bec.png"
 }

@@ -11,18 +11,15 @@
                 {% for paysage in row %}
                     <div class="col-md-4">
                         <article class="paysage bg-white rounded shadow">
-                            <div class="mw-100 overflow-hidden">
+                            <div class="mw-100 overflow-hidden rounded-top">
                                 <a href="{{ path('paysages_app', {id: paysage.id}) }}">
                                 <img src="{{ (paysage.imageName ? vich_uploader_asset(paysage) :
-                                asset('images/placeholder.jpg')) | imagine_filter('small') }}" 
-                                alt="{{paysage.titre}}" class="w-100 round-top"/>
+                                asset('build/images/placeholder.jpg')) | imagine_filter('small') }}" 
+                                alt="{{paysage.titre}}" class="w-100"/>
                                 </a>
                             </div>
-                            <div class="pl-3 pt-3">
-                            <p class="h6"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
-                            <p> {{paysage.description|u.truncate(30,'...', false)}}</p>
-                            <p> Created: {{(paysage.createdAt|ago)}}
-                            </div>    
+                            <p class="h6 pl-3 pt-3"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
+                            <p class="pl-3 pb-3"> {{paysage.description|u.truncate(30,'...', false)}}</p>
                         </article>
                     </div>   
                 {% endfor %}

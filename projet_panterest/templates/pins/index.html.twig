@@ -1,19 +1,34 @@
 {% extends 'Layout/base.html.twig' %}
 
-{% block title 'Les plus beaux paysages'%}
+{% block title 'Les plus beaux drapeaux français'%}
 
 {% block body %}
         {% if paysage|length > 0 %}
-        <h1 class="mb-4 text-center text-muted"> Tous les paysages : {{ pluralize(paysage|length, 'Paysage', 'Paysages') }}  </h1>
+        <h1 class="mb-4 text-center text-muted"> {{ pluralize(paysage|length, 'Flag', 'Flags') }}  </h1>
+       
+       {% for row in paysage|batch(3) %} 
+            <div class="row mb-5">
+                {% for paysage in row %}
+                    <div class="col-md-4">
+                        <article class="paysage bg-white rounded shadow">
+                            <div class="mw-100 overflow-hidden">
+                                <a href="{{ path('paysages_app', {id: paysage.id}) }}">
+                                <img src="{{ (paysage.imageName ? vich_uploader_asset(paysage) :
+                                asset('images/placeholder.jpg')) | imagine_filter('small') }}" 
+                                alt="{{paysage.titre}}" class="w-100 round-top"/>
+                                </a>
+                            </div>
+                            <div class="pl-3 pt-3">
+                            <p class="h6"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
+                            <p> {{paysage.description|u.truncate(30,'...', false)}}</p>
+                            <p> Created: {{(paysage.createdAt|ago)}}
+                            </div>    
+                        </article>
+                    </div>   
+                {% endfor %}
+            </div>
+        {% endfor %}    
 
-        {% for paysage in paysage %}
-            <article>
-                <img src="{{ vich_uploader_asset(paysage) | imagine_filter('medium') }}" alt="{{paysage.titre}}"/>
-                <h2><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></h2>
-                <p> {{paysage.description|u.truncate(30,'...', false)}}</p>
-                <p> Created: {{(paysage.createdAt|ago)}}
-            </article>
-        {% endfor %}
     {% else %}
         <h1 class="mt-4 text-center"> No landscape yet. <a href="{{ path('create_app') }}"> Be the first!</a> </h1>
     {% endif %}

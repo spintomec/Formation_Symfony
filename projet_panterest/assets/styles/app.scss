@@ -31,6 +31,11 @@
      @extend .rounded;
      @extend .shadow;
      @extend .img-thumbnail;  
-     @extend .align-center;
     } 
+}
+.paysage img {
+    transition: transform 0.3s ease-out;
+    &:hover {
+        transform: scale(1.15);
+    }
 }

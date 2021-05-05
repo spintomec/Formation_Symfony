@@ -7,9 +7,15 @@ liip_imagine:
         medium:
             filters:
                 thumbnail:
+                    size: [450, 300] 
                     mode: outbound
-                    size: [400, 400] 
+                    alow_upscale: true
+                    alow_downscale: true
         small:
             filters:
                 thumbnail:
-                    size: [200, 200]
+                    size: [300, 200]
+                    mode: outbound
+                    alow_upscale: true
+                    alow_downscale: true
+

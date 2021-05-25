@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -55,6 +57,16 @@ class User implements UserInterface
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Paysages::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $paysages;
+
+    public function __construct()
+    {
+        $this->paysages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -125,7 +137,6 @@ class User implements UserInterface
      */
     public function getSalt(): ?string
     {
-        return null;
     }
 
     /**
@@ -193,5 +204,35 @@ class User implements UserInterface
        }
 
        $this->setUpdatedAt(new \DateTimeImmutable);
+    }
+
+    /**
+     * @return Collection|Paysages[]
+     */
+    public function getPaysages(): Collection
+    {
+        return $this->paysages;
+    }
+
+    public function addPaysage(Paysages $paysage): self
+    {
+        if (!$this->paysages->contains($paysage)) {
+            $this->paysages[] = $paysage;
+            $paysage->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaysage(Paysages $paysage): self
+    {
+        if ($this->paysages->removeElement($paysage)) {
+            // set the owning side to null (unless already changed)
+            if ($paysage->getUser() === $this) {
+                $paysage->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

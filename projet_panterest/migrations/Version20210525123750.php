@@ -14,7 +14,7 @@ final class Version20210525123750 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return '';
+        return 'add relation between user and paysages';
     }
 
     public function up(Schema $schema) : void

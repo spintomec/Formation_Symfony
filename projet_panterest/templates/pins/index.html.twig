@@ -15,11 +15,12 @@
                                 <a href="{{ path('paysages_app', {id: paysage.id}) }}">
                                 <img src="{{ (paysage.imageName ? vich_uploader_asset(paysage) :
                                 asset('build/images/placeholder.jpg')) | imagine_filter('small') }}" 
-                                alt="{{paysage.titre}}" class="w-100"/>
+                                class="w-100"/>
                                 </a>
                             </div>
-                            <p class="h6 pl-3 pt-3"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
-                            <p class="pl-3 pb-3"> {{paysage.description|u.truncate(30,'...', false)}}</p>
+                            <p class="h4 pl-3 pt-3"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
+                            <p class="pl-3 pb-3 text-muted"><small>Submitted by {{ paysage.user.FullName}}</small> </p>
+                            <p class="pl-3 pb-3"> {{paysage.description|u.truncate(50,'...', false)}}</p>
                         </article>
                     </div>   
                 {% endfor %}

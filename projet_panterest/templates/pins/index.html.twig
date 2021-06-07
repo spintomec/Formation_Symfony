@@ -20,7 +20,6 @@
                             </div>
                             <p class="h4 pl-3 pt-3"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
                             <p class="pl-3 pb-3 text-muted"><small>Submitted by {{ paysage.user.FullName}}</small> </p>
-                            <p class="pl-3 pb-3"> {{paysage.description|u.truncate(50,'...', false)}}</p>
                         </article>
                     </div>   
                 {% endfor %}

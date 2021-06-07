@@ -9,22 +9,20 @@
 
 <article class="paysage bg-white rounded shadow">
     <div class="mw-100 overflow-hidden rounded-top">
-        <a href="{{ path('paysages_app', {id: paysage.id}) }}">
         <img src="{{ (paysage.imageName ? vich_uploader_asset(paysage) :
         asset('build/images/placeholder.jpg')) | imagine_filter('small') }}" 
         alt="{{paysage.titre}}" class="w-100"/>
-        </a>
     </div>
     <div class="pl-3 pt-3 pb-3">
-    <p class="h4"><a href="{{ path('paysages_app', {id: paysage.id}) }}"> {{paysage.titre}}</a></p>
+    <p class="h4"> {{paysage.titre}}</a></p>
     <p class="text-muted pb-2"> 
         <small>
             Created 
             <time datetime="{{ paysage.createdAt|date('Y-m-d H:i:s') }}">{{ paysage.createdAt|ago }}</time>
         </small>   
     </p>
-    <p> {{paysage.description}}</p>
-    <a href="{{ path('edit_app', {id: paysage.id}) }}" class="btn btn-light">Edit </a>
+    <p class="pb-3 text-break pr-3">{{paysage.description}}</p>
+    <a href="{{ path('edit_app', {id: paysage.id}) }}" class="pl--3btn btn-light">Edit </a>
     <a href="#" onclick="event.preventDefault(); confirm('Are you sure') && 
     document.getElementById('js-paysage-delete-form').submit();" class="btn btn-light">Delete</a>
 

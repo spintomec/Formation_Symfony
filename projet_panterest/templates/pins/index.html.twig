@@ -1,10 +1,10 @@
 {% extends 'Layout/base.html.twig' %}
 
-{% block title 'Les plus beaux drapeaux français'%}
+{% block title 'Translate your projects '%}
 
 {% block body %}
         {% if paysage|length > 0 %}
-        <h1 class="mb-4 text-center text-muted"> {{ pluralize(paysage|length, 'Flag', 'Flags') }}  </h1>
+        <h1 class="mb-4 text-center text-muted"> {{ pluralize(paysage|length, 'Project', 'Projects') }}  </h1>
        
        {% for row in paysage|batch(3) %} 
             <div class="row mb-5">
@@ -27,6 +27,6 @@
         {% endfor %}    
 
     {% else %}
-        <h1 class="mt-4 text-center"> No landscape yet. <a href="{{ path('create_app') }}"> Be the first!</a> </h1>
+        <h1 class="mt-4 text-center"> No project yet. <a href="{{ path('create_app') }}"> Be the first!</a> </h1>
     {% endif %}
 {% endblock %}
